@@ -1,10 +1,48 @@
+/* MAIN COMPONENTS */
+
 html,
 body,
 #root {
-    height: 100%;
-    margin: 0;
+  height: 100%;
+  margin: 0;
+  user-select: none;
 }
 
+
+a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+a:hover {
+  transition: ease 0.3s;
+  opacity: 0.6;
+}
+
+
+hr {
+  margin-top: 3rem;
+  height: 1px;
+  background-color: gray;
+  border: none;
+  width: 100%;
+}
+
+button {
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  transition: ease 0.3s;
+  opacity: 0.6;
+}
+
+/*END OF MAIN COMPONENTS */
+
+/* HEADER SECTION*/
 
 header {
   display: flex;
@@ -13,6 +51,7 @@ header {
   width: 100%;
   height: 3.63rem;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
 .player {
@@ -20,7 +59,7 @@ header {
   gap: 3rem;
   max-width: 40%;
   height: 100%;
-  float: left;
+  width: 23rem;
 }
 
 .controls {
@@ -35,30 +74,123 @@ header {
   background-color: transparent;
 }
 
-.player_btn > img {
+.player_btn>img {
   filter: brightness(0) invert(1);
   height: 100%;
   width: 100%;
   object-fit: contain;
 }
 
-.prev_btn, .next_btn {
+.prev_btn,
+.next_btn {
   transform: scale(0.7);
 }
 
 .logo {
-  background-color: blueviolet;
+  align-items: center;
   width: 10%;
   height: 100%;
-  justify-self: center;
+  display: flex;
+}
+
+.logo>img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  max-height: 1.5rem;
+  background-color: transparent;
 }
 
 .actions {
   display: flex;
-  background-color: aquamarine;
-  float: right;
   height: 100%;
   max-width: 50%;
-  padding-left: 2.5rem;
-  padding-right: 1rem;
+  align-items: center;
+  gap: .7rem;
+  width: 23rem;
+  justify-content: end;
 }
+
+.user {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.user>img {
+  border-radius: 50%;
+}
+
+.pages {
+  display: flex;
+  gap: 0.4rem
+}
+
+/*END OF HEADER SECTION*/
+
+/* FOOTER SECTION */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 30rem;
+  background-color: #000000;
+  color: white;
+}
+
+.links {
+  padding-top: 5rem;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+  display: flex;
+  gap: 5rem;
+}
+
+.stack_block {
+  gap: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  color: gray;
+}
+
+.stack_block>h4 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.basement {
+  padding-top: 5rem;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+  display: flex;
+  gap: 5rem;
+  color: gray;
+}
+
+.languages {
+  display: flex;
+  gap: 0.5rem
+}
+
+.languages>a {
+  color: gray;
+}
+
+.languages>a:hover {
+  color: aliceblue;
+}
+
+.languages>a.selected {
+  color: white;
+  pointer-events: none;
+}
+
+.zone>p>span {
+  color: white;
+}
+
+/* END FOOTER SECTION */
