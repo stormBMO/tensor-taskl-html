@@ -1,0 +1,122 @@
+/* MAIN SECTION */
+
+.search_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 0.7rem 0.8rem;
+  text-decoration: none;
+  font-size: 1.3rem;
+  position: relative;
+}
+
+li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+li a.active {
+  color: black;
+  font-weight: 500;
+}
+
+li a.active::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 80%;
+  bottom: 0;
+  height: 3px;
+  background-color: #d51007;
+}
+
+.search_header {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  max-width: 80rem;
+}
+
+.search_content>hr {
+  margin: 0;
+  background-color: #EBEBEB;
+}
+
+.response_block {
+  display: flex;
+  width: 70%;
+  max-width: 80rem;
+}
+
+.response_wrapper {
+  width: 70%;
+  border-right: 1px solid #EBEBEB;
+  padding-right: 1rem;
+}
+
+.search_input {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #EBEBEB;
+  padding: 0.3rem;
+}
+
+.search_input input[type=text] {
+  padding: 0.3rem;
+  font-size: 17px;
+  border: none;
+  width: 100%;
+  background-color: transparent;
+}
+
+.search_input button {
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search_input button[type=reset] {
+  border-radius: 50%;
+  color: rgb(71, 68, 68);
+  font-size: 0.8rem;
+  background: #ddd;
+}
+
+.search_input button[type=submit] {
+  border-radius: 50%;
+}
+
+.search_controls {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem
+}
+
+.search_controls>hr {
+  margin: 0;
+  width: 2px;
+  height: 80%;
+}
+
+.artists_response {
+  display: grid;
+}
+
+/* END OF MAIN SECTION */
