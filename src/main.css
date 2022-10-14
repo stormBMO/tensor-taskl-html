@@ -19,6 +19,7 @@
 }
 
 .red_line {
+  margin-top: 1rem;
   height: 2px;
   background-color: #D51007;
   width: 3rem;
