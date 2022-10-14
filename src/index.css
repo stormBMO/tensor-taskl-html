@@ -6,11 +6,13 @@ body,
   height: 100%;
   margin: 0;
   user-select: none;
+  /* font-family: Barlow, Open Sans, Lucida Grande, Helvetica Neue, Helvetica, Arial, Sans-serif; */
 }
 
 h6,
 h5,
 h4,
+h3,
 p {
   margin-block-start: 0;
   margin-block-end: 0;

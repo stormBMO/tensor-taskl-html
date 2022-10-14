@@ -6,18 +6,18 @@
   align-items: center;
 }
 
-ul {
+.search_content ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-li {
+.search_content li {
   float: left;
 }
 
-li a {
+.search_content li a {
   display: block;
   color: #666;
   text-align: center;
@@ -27,16 +27,16 @@ li a {
   position: relative;
 }
 
-li a:hover:not(.active) {
+.search_content li a:hover:not(.active) {
   background-color: #ddd;
 }
 
-li a.active {
+.search_content li a.active {
   color: black;
   font-weight: 500;
 }
 
-li a.active::after {
+.search_content li a.active::after {
   content: '';
   display: block;
   position: absolute;
@@ -115,8 +115,115 @@ li a.active::after {
   height: 80%;
 }
 
-.artists_response {
+.artists_response,
+.albums_response {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 0;
+  row-gap: 0;
 }
+
+.artists_cell,
+.albums_cell {
+  height: 14rem;
+  width: 14rem;
+  position: relative;
+  display: flex;
+  align-items: end;
+  cursor: pointer;
+  transition: ease 0.3s;
+}
+
+.artists_cell:hover,
+.albums_cell:hover {
+  filter: grayscale(0.3);
+}
+
+.artists_cell .cover,
+.albums_cell .cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+}
+
+.artists_cell .cover>img,
+.albums_cell .cover>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artists_cell .text,
+.albums_cell .text {
+  position: absolute;
+  text-shadow: 0 0 10px rgb(0 0 0 / 70%);
+  z-index: 3;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+
+.more_artists,
+.more_tracks,
+.more_albums {
+  margin: 1rem 0;
+  width: 100%;
+  text-align: right;
+}
+
+.more_albums>a,
+.more_tracks>a,
+.more_artists>a {
+  font-size: 1.2rem;
+  color: blue;
+}
+
+.tracks_block {
+  display: flex;
+  flex-direction: column;
+}
+
+.track_cell {
+  padding: 0.5rem;
+  margin-top: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+.track_info {
+  display: flex;
+  align-items: center;
+}
+
+.track_play {
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.track_cover {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 2rem;
+}
+
+.track_name {
+  margin-right: 6rem;
+}
+
+.inner_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 /* END OF MAIN SECTION */
