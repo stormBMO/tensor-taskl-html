@@ -4,10 +4,10 @@ import React from 'react';
 //   return (
 //     <div className="App">
 //       <header className="App-header">
-//         <p>
+//         <p class="planetext">
 //           Edit <code>src/App.tsx</code> and save to reload.
 //         </p>
-//         <a
+//         <a class="link"
 //           className="App-link"
 //           href="https://reactjs.org"
 //           target="_blank"

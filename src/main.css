@@ -53,19 +53,19 @@
   transform: scale(1.1);
 }
 
-.artist_cover>img {
+.artist_cover .image {
   height: 100%;
   width: 100%;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.artist_name>h4 {
+.artist_name .semiheader {
   margin-block-start: 0.4rem;
   margin-block-end: 0.4rem;
 }
 
-.artist_genre>p {
+.artist_genre .planetext {
   margin-block-start: 0.4rem;
   margin-block-end: 0.4rem;
   font-size: 0.9rem;
@@ -100,7 +100,7 @@
   height: 4rem;
 }
 
-.song_cover>img {
+.song_cover .image {
   height: 100%;
   width: 100%;
 }
@@ -109,16 +109,16 @@
   padding: 0.6rem 0;
 }
 
-.song_description>h4 {
+.song_description .semiheader {
   font-size: 1.2rem;
 }
 
-.song_description>h5 {
+.song_description .smallheader {
   font-size: 1.1rem;
   font-weight: 500;
 }
 
-.song_description>p {
+.song_description .planetext {
   font-size: 0.9rem;
   color: gray;
 }

@@ -6,18 +6,18 @@
   align-items: center;
 }
 
-.search_content ul {
+.search_content .table {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-.search_content li {
+.search_content .table_cell {
   float: left;
 }
 
-.search_content li a {
+.search_content .table_cell .link {
   display: block;
   color: #666;
   text-align: center;
@@ -27,16 +27,16 @@
   position: relative;
 }
 
-.search_content li a:hover:not(.active) {
+.search_content .table_cell .link:hover:not(.active) {
   background-color: #ddd;
 }
 
-.search_content li a.active {
+.search_content .table_cell .link.active {
   color: black;
   font-weight: 500;
 }
 
-.search_content li a.active::after {
+.search_content .table_cell .active::after {
   content: '';
   display: block;
   position: absolute;
@@ -53,7 +53,7 @@
   max-width: 80rem;
 }
 
-.search_content>hr {
+.search_content hr {
   margin: 0;
   background-color: #EBEBEB;
 }
@@ -109,7 +109,7 @@
   gap: 0.4rem
 }
 
-.search_controls>hr {
+.search_controls hr {
   margin: 0;
   width: 2px;
   height: 80%;
@@ -147,8 +147,8 @@
   z-index: 2;
 }
 
-.artists_cell .cover>img,
-.albums_cell .cover>img {
+.artists_cell .cover .image,
+.albums_cell .cover .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -175,9 +175,9 @@
   text-align: right;
 }
 
-.more_albums>a,
-.more_tracks>a,
-.more_artists>a {
+.more_albums .link,
+.more_tracks .link,
+.more_artists .link {
   font-size: 1.2rem;
   color: blue;
 }
