@@ -7,7 +7,7 @@ import './main.css';
 
 // ReactDOM.render(
 //   <React.StrictMode>
-//     <a class="link"pp />
+//     <App />
 //   </React.StrictMode>,
 //   document.getElementById('root')
 // );
