@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.search_content .table {
+.table_search {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -17,7 +17,7 @@
   float: left;
 }
 
-.search_content .table_cell .link {
+.link_table {
   display: block;
   color: #666;
   text-align: center;
@@ -53,7 +53,7 @@
   max-width: 80rem;
 }
 
-.search_content hr {
+.split_search {
   margin: 0;
   background-color: #EBEBEB;
 }
@@ -78,7 +78,7 @@
   padding: 0.3rem;
 }
 
-.search_input input[type=text] {
+.input_field {
   padding: 0.3rem;
   font-size: 17px;
   border: none;
@@ -86,20 +86,20 @@
   background-color: transparent;
 }
 
-.search_input button {
+.btn_search {
   font-size: 17px;
   border: none;
   cursor: pointer;
 }
 
-.search_input button[type=reset] {
+.btn_search[type=reset] {
   border-radius: 50%;
   color: rgb(71, 68, 68);
   font-size: 0.8rem;
   background: #ddd;
 }
 
-.search_input button[type=submit] {
+.btn_search[type=submit] {
   border-radius: 50%;
 }
 
@@ -175,9 +175,9 @@
   text-align: right;
 }
 
-.more_albums .link,
-.more_tracks .link,
-.more_artists .link {
+.link_albums,
+.link_tracks,
+.link_artists {
   font-size: 1.2rem;
   color: blue;
 }
