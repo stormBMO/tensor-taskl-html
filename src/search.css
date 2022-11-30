@@ -129,7 +129,7 @@
   width: 14rem;
   position: relative;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   cursor: pointer;
   transition: ease 0.3s;
 }

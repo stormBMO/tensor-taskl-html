@@ -128,7 +128,7 @@ header {
   align-items: center;
   gap: .7rem;
   width: 23rem;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .user {
