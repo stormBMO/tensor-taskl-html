@@ -191,14 +191,17 @@ const bootstrap = async () => {
   artitsInfo.forEach(artist => appendArtistToDOM(artist));
 }
 
-window.onstorage = () => {
-  console.log('aasdasd')
+window.addEventListener('storage', () => {
+  console.log('11111')
   if (window.localStorage.getItem("searchString")) {
     bootstrap();
   }
-}
+})
 
-document.querySelector(".btn_search")?.addEventListener('click', () => {
+const a = document.getElementById("asdasd")
+
+a?.addEventListener('click', () => {
+  console.log((document.querySelector(".input_field") as HTMLInputElement)?.value)
   window.localStorage.setItem("searchString", (document.querySelector(".input_field") as HTMLInputElement)?.value)
 })
 
