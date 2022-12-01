@@ -72,8 +72,8 @@ const bootstrap = async () => {
         fetchPopularTracks(),
     ]);
     const [artistTags, tracksTags] = [
-        await Promise.all(hotArtists.map(async (hotArtist) => await fetchTagsByArtistName(hotArtist.name))),
-        await Promise.all(popularTracks.map(async (popularTrack) => await fetchTagsByTrack(popularTrack.name, popularTrack.artist.name)))
+        await Promise.all(hotArtists.map((hotArtist) => fetchTagsByArtistName(hotArtist.name))),
+        await Promise.all(popularTracks.map((popularTrack) => fetchTagsByTrack(popularTrack.name, popularTrack.artist.name)))
     ];
     hotArtists.forEach((artist, i) => appendArtistToDOM({ ...artist, tags: artistTags[i] }));
     popularTracks.forEach((track, i) => appendTracksToDOM({ ...track, tags: tracksTags[i] }));

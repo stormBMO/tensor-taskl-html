@@ -10,25 +10,25 @@ type TTag = {
   url: string;
 };
 
-type TBaseStruct = {
+type TImage = {
+  "#text": string,
+  size: string
+}
+
+type TBaseType = {
   name: string;
   url: string;
   image: TImage[];
   tags: TTag[];
 }
 
-type TImage = {
-  "#text": string,
-  size: string
-}
-
 type TArtist = {
   id: number;
-} & TBaseStruct;
+} & TBaseType;
 
 type TTrack = {
   artist: TArtist;
-} & TBaseStruct;
+} & TBaseType;
 
 const appendArtistToDOM = (artist: TArtist) => {
   const template = `
@@ -116,11 +116,11 @@ const bootstrap = async () => {
   ]);
   const [artistTags, tracksTags]: [TTag[][], TTag[][]] = [
     await Promise.all(hotArtists.map(
-      async (hotArtist: TArtist) => await fetchTagsByArtistName(hotArtist.name)
+      (hotArtist: TArtist) => fetchTagsByArtistName(hotArtist.name)
     )),
     await Promise.all(popularTracks.map(
-      async (popularTrack: any) =>
-        await fetchTagsByTrack(popularTrack.name, popularTrack.artist.name)
+      (popularTrack: any) =>
+        fetchTagsByTrack(popularTrack.name, popularTrack.artist.name)
     ))
   ];
 

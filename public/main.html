@@ -3,9 +3,12 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="stylesheet" type="text/css" href="../src/index.css">
-  <link rel="stylesheet" type="text/css" href="../src/search.css">
-  <script type="module" src="./script/searchPage.js" defer></script>
+  <link rel="stylesheet" href="../src/index.css">
+  <link rel="stylesheet" href="../src/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <script type="module" src="./script/mainPage.js" defer></script>
   <title>Диплом</title>
 </head>
 
@@ -32,7 +35,7 @@
       <img class="image" src="assets/lastfm_logo.svg" alt="" srcset="">
     </div>
     <div class="actions">
-      <div class="search">
+      <div class="search" onclick="(()=>window.location.pathname = 'search.html')()">
         <img class="image" src="assets/search_btn.png" alt="">
       </div>
       <div class="pages">
@@ -49,63 +52,21 @@
     </div>
   </header>
   <main>
-    <div class="search_content">
-      <div class="search_header">
-        <div class="search_title">
-          <h1>Search results</h1>
-        </div>
-        <div class="quick_menu">
-          <ul class="table_search">
-            <li class="table_cell"><a class="link_table active" href="#">Top Results</a></li>
-            <li class="table_cell"><a class="link_table" href="#">Artists</a></li>
-            <li class="table_cell"><a class="link_table" href="#">Albums</a></li>
-            <li class="table_cell"><a class="link_table" href="#">Tracks</a></li>
-          </ul>
-        </div>
+    <div class="main_content">
+      <div class="music_title">
+        <h1>Music</h1>
       </div>
-      <hr class='split_search' />
-      <div class="response_block">
-        <div class="response_wrapper">
-          <div class="search_input">
-            <input class="input_field" type="text" placeholder="Search.." value="Steve" name="search">
-            <div class="search_controls">
-              <button class="btn_search" type="reset">
-                X
-              </button>
-              <hr />
-              <button class="btn_search" type="submit">
-                <img class="image" src="assets/search_gray.png" alt="">
-              </button>
-            </div>
-          </div>
-          <div class="artists_block">
-            <div class="artists_label">
-              <h1>Artists</h1>
-            </div>
-            <div class="artists_response"></div>
-            <div class="more_artists">
-              <a class="link_artists" href="#">More artists</a>
-            </div>
-          </div>
-          <div class="albums_block">
-            <div class="albums_label">
-              <h1>Albums</h1>
-            </div>
-            <div class="albums_response"></div>
-            <div class="more_albums">
-              <a class="link_albums" href="#">More albums</a>
-            </div>
-          </div>
-          <div class="tracks_block">
-            <div class="tracks_label">
-              <h1>Tracks</h1>
-            </div>
-            <div class="track_response"></div>
-            <div class="more_tracks">
-              <a class="link_tracks" href="#">More tracks</a>
-            </div>
-          </div>
-        </div>
+      <div class="title_section">
+        <h3 class="halfheader">Hot right now</h3>
+        <div class="red_line"></div>
+      </div>
+      <div class="hot_section">
+      </div>
+      <div class="title_section">
+        <h3 class="halfheader">Popular tracks</h3>
+        <div class="red_line"></div>
+      </div>
+      <div class="popular_section">
       </div>
     </div>
   </main>
@@ -150,7 +111,7 @@
     <div class="basement">
       <div class="service">
         <div class="languages">
-          <a class="link" class="selected">
+          <a class="link selected">
             English
           </a>
           <a class="link">
@@ -170,7 +131,7 @@
           </a>
         </div>
         <div class="zone">
-          <p class="planetext">Time zone: <span>Europe/Moscow</span></p>
+          <p class="planetext">Time zone: <span class="colored">Europe/Moscow</span></p>
         </div>
         <div class="copyright">
           <p class="planetext">CBS Interactive © 2022 Last.fm Ltd. All rights reserved Terms of Use Privacy Policy Legal
