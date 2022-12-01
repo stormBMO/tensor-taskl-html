@@ -30,10 +30,16 @@
   display: grid;
   column-gap: 3rem;
   row-gap: 3rem;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
 }
 
-@media (max-width: 1260px) {
+@media (max-width: 1500px) {
+  .hot_section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
   .hot_section {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -82,6 +88,18 @@
   max-width: 70rem;
 }
 
+@media (max-width: 1200px) {
+  .popular_section {
+    grid-template-columns: repeat(2, 1fr)
+  }
+}
+
+@media (max-width: 700px) {
+  .popular_section {
+    grid-template-columns: repeat(1, 1fr)
+  }
+}
+
 .song_element {
   display: flex;
   gap: .4rem;
@@ -106,6 +124,9 @@
 }
 
 .song_description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
   padding: 0.6rem 0;
 }
 

@@ -31,8 +31,7 @@ type Track = {
 
 const appendArtistToDOM = (artist: Artist) => {
   const template = `
-    <div class="artist_element" onClick="(()=>{document.location.href = '${
-      artist.url
+    <div class="artist_element" onClick="(()=>{document.location.href = '${artist.url
     }'})()">
       <div class="artist_cover">
         <img class="image" src="${artist.image}" alt="" srcset="">
@@ -42,8 +41,8 @@ const appendArtistToDOM = (artist: Artist) => {
       </div>
       <div class="artist_genre">
         <p class="planetext">${artist.tags
-          .map((tag: Tag) => tag.name)
-          .join(' ')}</p>
+      .map((tag: Tag) => tag.name)
+      .join(' ')}</p>
       </div>
     </div>
   `;
@@ -53,18 +52,17 @@ const appendArtistToDOM = (artist: Artist) => {
 
 const appendTracksToDOM = (track: Track) => {
   const template = `
-    <div class="song_element" onClick="(()=>{document.location.href = '${
-      track.url
+    <div class="song_element" onClick="(()=>{document.location.href = '${track.url
     }'})()"> 
       <div class="song_cover">
         <img class="image" src="${track.image}" alt="">
       </div>
       <div class="song_description">
         <h4 class="semiheader">${track.name}</h4>
-        <h5>${track.artist.name}</h5>
+        <h5 class="halfheader">${track.artist.name}</h5>
         <p class="planetext">${track.tags
-          .map((tag: Tag) => tag.name)
-          .join(' ')}</p>
+      .map((tag: Tag) => tag.name)
+      .join(' ')}</p>
       </div>
     </div>
   `;
@@ -75,7 +73,7 @@ const appendTracksToDOM = (track: Track) => {
 async function fetchHotArtists() {
   const response = await fetch(
     apiURL +
-      `?method=chart.gettopartists&page=1&limit=12&api_key=${apiKey}&format=json`
+    `?method=chart.gettopartists&page=1&limit=12&api_key=${apiKey}&format=json`
   );
   const data = await response.json();
   return data.artists.artist;
@@ -84,7 +82,7 @@ async function fetchHotArtists() {
 async function fetchPopularTracks() {
   const response = await fetch(
     apiURL +
-      `?method=chart.gettoptracks&page=1&limit=12&api_key=${apiKey}&format=json`
+    `?method=chart.gettoptracks&page=1&limit=12&api_key=${apiKey}&format=json`
   );
   const data = await response.json();
   return data.tracks.track;
@@ -93,7 +91,7 @@ async function fetchPopularTracks() {
 async function fetchTagsByArtistName(name: string) {
   const response = await fetch(
     apiURL +
-      `?method=artist.gettoptags&artist=${name}&api_key=${apiKey}&format=json`
+    `?method=artist.gettoptags&artist=${name}&api_key=${apiKey}&format=json`
   );
   const data = await response.json();
   return data.toptags.tag.slice(0, 3);
@@ -102,7 +100,7 @@ async function fetchTagsByArtistName(name: string) {
 async function fetchTagsByTrack(track: string, artist: string) {
   const response = await fetch(
     apiURL +
-      `?method=track.gettoptags&artist=${artist}&track=${track}&api_key=${apiKey}&format=json`
+    `?method=track.gettoptags&artist=${artist}&track=${track}&api_key=${apiKey}&format=json`
   );
   const data = await response.json();
   return data.toptags.tag.slice(0, 3);

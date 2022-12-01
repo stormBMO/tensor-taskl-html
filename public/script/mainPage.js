@@ -21,7 +21,7 @@ const appendArtistToDOM = (artist) => {
       </div>
     </div>
   `;
-    hotArtistsBlock === null || hotArtistsBlock === void 0 ? void 0 : hotArtistsBlock.insertAdjacentHTML('beforeend', template);
+    hotArtistsBlock?.insertAdjacentHTML('beforeend', template);
 };
 const appendTracksToDOM = (track) => {
     const template = `
@@ -31,14 +31,14 @@ const appendTracksToDOM = (track) => {
       </div>
       <div class="song_description">
         <h4 class="semiheader">${track.name}</h4>
-        <h5>${track.artist.name}</h5>
+        <h5 class="halfheader">${track.artist.name}</h5>
         <p class="planetext">${track.tags
         .map((tag) => tag.name)
         .join(' ')}</p>
       </div>
     </div>
   `;
-    popularTracksBlock === null || popularTracksBlock === void 0 ? void 0 : popularTracksBlock.insertAdjacentHTML('beforeend', template);
+    popularTracksBlock?.insertAdjacentHTML('beforeend', template);
 };
 async function fetchHotArtists() {
     const response = await fetch(apiURL +
