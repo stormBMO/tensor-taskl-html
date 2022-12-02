@@ -5,22 +5,28 @@ const searchArtistsBlock = document.querySelector('.artists_response');
 const searchAlbumsBlock = document.querySelector('.albums_response');
 const searchTracksBlock = document.querySelector('.track_response');
 
+const searchButton = document.getElementById('search');
+const resetButton = document.getElementById('reset');
+const searchResults = document.getElementById('results');
+
+const inputField = document.querySelector('.input_field') as HTMLInputElement;
+
 type TImage = {
-  "#text": string,
-  size: string
-}
+  '#text': string;
+  size: string;
+};
 
 type TBaseType = {
   name: string;
   url: string;
   streamable: number;
-}
+};
 
 type TAlbum = {
   id: number;
   image: TImage[];
   artist: string;
-} & TBaseType
+} & TBaseType;
 
 type TArtist = {
   id: number;
@@ -31,16 +37,16 @@ type TTrack = {
   listeners: number;
   image: TImage[];
   artist: string;
-} & TBaseType
+} & TBaseType;
 
 type TTrackInfo = {
   id: number;
   artist: {
     name: string;
-  },
+  };
   album: {
     image: TImage[];
-  }
+  };
   listeners: number;
   duration: number;
 } & TBaseType;
@@ -48,30 +54,31 @@ type TTrackInfo = {
 type TArtistInfo = {
   stats: {
     listeners: number;
-  }
+  };
   image: TImage[];
 } & TBaseType;
-
 
 // TODO :: to utils.ts
 const millisToMinutesAndSeconds = (millis: number) => {
   const minutes = Math.floor(millis / 60000);
   const seconds = Number(((millis % 60000) / 1000).toFixed(0));
-  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-}
+  return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+};
 
 const appendArtistToDOM = (artist: TArtistInfo) => {
   const template = `
   <div class="artists_cell">
     <div class="cover">
-      <img class="image" src="${artist.image[3]["#text"] || "assets/album_default.png"}" alt="">
+      <img class="image" src="${
+        artist?.image?.[3]['#text'] || 'assets/album_default.png'
+      }" alt="">
     </div>
     <div class="text">
       <div class="name">
-        <h3 class="halfheader">${artist.name}</h3>
+        <h3 class="halfheader">${artist?.name}</h3>
       </div>
       <div class="descriptions_cell">
-        <p class="planetext">${artist.stats.listeners} listeners</p>
+        <p class="planetext">${artist?.stats.listeners} listeners</p>
       </div>
     </div>
   </div>
@@ -84,7 +91,9 @@ const appendAlbumsToDOM = (album: TAlbum) => {
   const template = `
   <div class="albums_cell">
     <div class="cover">
-      <img class="image" src="${album.image[3]['#text'] || "assets/album_default.png"}" alt="">
+      <img class="image" src="${
+        album.image[3]['#text'] || 'assets/album_default.png'
+      }" alt="">
     </div>
     <div class="text">
       <div class="name">
@@ -105,11 +114,15 @@ const appendTracksToDOM = (track: TTrackInfo) => {
   const template = `
   <div class="track_cell">
     <div class="track_info">
-      <div class="track_play">
+      <div class="track_play" onClick="(()=>{document.location.href = '${
+        track.url
+      }'})()">
         <img class="inner_img" src="assets/play_button.png" alt="">
       </div>
       <div class="track_cover">
-        <img class="inner_img" src="${track.album?.image?.[3]["#text"] || "assets/album_default.png"}" alt="">
+        <img class="inner_img" src="${
+          track.album?.image?.[3]['#text'] || 'assets/album_default.png'
+        }" alt="">
       </div>
       <div class="track_name">
         <h3 class="halfheader">${track.name}</h3>
@@ -126,85 +139,96 @@ const appendTracksToDOM = (track: TTrackInfo) => {
 const fetchSearchArtists = async (searchString: string) => {
   const response = await fetch(
     apiURL +
-    `?method=artist.search&limit=8&artist=${searchString}&api_key=${apiKey}&format=json`
+      `?method=artist.search&limit=8&artist=${searchString}&api_key=${apiKey}&format=json`
   );
   const data = await response.json();
   return data.results.artistmatches.artist;
-}
+};
 
 const fetchTrackInfoByInfo = async (artist: string, track: string) => {
   const response = await fetch(
     apiURL +
-    `?method=track.getInfo&api_key=${apiKey}&artist=${artist}&track=${track}&format=json`
+      `?method=track.getInfo&api_key=${apiKey}&artist=${artist}&track=${track}&format=json`
   );
   const data = await response.json();
   return data.track;
-}
+};
 
 const fetchArtistInfoByInfo = async (artist: string) => {
   const response = await fetch(
     apiURL +
-    `?method=artist.getinfo&artist=${artist}&api_key=${apiKey}&format=json`
+      `?method=artist.getinfo&artist=${artist}&api_key=${apiKey}&format=json`
   );
   const data = await response.json();
   return data.artist;
-}
+};
 
 const fetchSearchTracks = async (searchString: string) => {
   const response = await fetch(
     apiURL +
-    `?method=track.search&limit=12&track=${searchString}&api_key=${apiKey}&format=json`
+      `?method=track.search&limit=12&track=${searchString}&api_key=${apiKey}&format=json`
   );
   const data = await response.json();
   return data.results.trackmatches.track;
-}
+};
 
 const fetchSearchAlbums = async (searchString: string) => {
   const response = await fetch(
     apiURL +
-    `?method=album.search&limit=8&album=${searchString}&api_key=${apiKey}&format=json`
+      `?method=album.search&limit=8&album=${searchString}&api_key=${apiKey}&format=json`
   );
   const data = await response.json();
   return data.results.albummatches.album;
-}
+};
 
+const bootstrap = async (searchString: string) => {
+  searchResults!.innerText = `Search results for "${searchString}"`;
+  if (!searchString.length) return;
+  if (!inputField.value) inputField.value = searchString;
 
-const bootstrap = async () => {
-  const searchString = window.localStorage.getItem("searchString")
-
-  const [searchTracks, searchAlbums, searchArtists]: [TTrack[], TAlbum[], TArtist[]] = await Promise.all([
-    fetchSearchTracks("steve"),
-    fetchSearchAlbums("steve"),
-    fetchSearchArtists("steve")
-  ])
+  const [searchTracks, searchAlbums, searchArtists]: [
+    TTrack[],
+    TAlbum[],
+    TArtist[]
+  ] = await Promise.all([
+    fetchSearchTracks(searchString),
+    fetchSearchAlbums(searchString),
+    fetchSearchArtists(searchString),
+  ]);
 
   const tracksInfo: TTrackInfo[] = await Promise.all(
-    searchTracks.map(track => fetchTrackInfoByInfo(track.artist, track.name))
-  )
+    searchTracks.map((track) => fetchTrackInfoByInfo(track.artist, track.name))
+  );
 
   const artitsInfo: TArtistInfo[] = await Promise.all(
-    searchArtists.map(artist => fetchArtistInfoByInfo(artist.name))
-  )
+    searchArtists.map((artist) => fetchArtistInfoByInfo(artist.name))
+  );
 
-  tracksInfo.forEach(track => appendTracksToDOM(track));
-  searchAlbums.forEach(album => appendAlbumsToDOM(album))
-  artitsInfo.forEach(artist => appendArtistToDOM(artist));
-}
+  tracksInfo.forEach((track) => appendTracksToDOM(track));
+  searchAlbums.forEach((album) => appendAlbumsToDOM(album));
+  artitsInfo.forEach((artist) => appendArtistToDOM(artist));
+};
 
-window.addEventListener('storage', () => {
-  console.log('11111')
-  if (window.localStorage.getItem("searchString")) {
-    bootstrap();
-  }
-})
+searchButton?.addEventListener('click', () => {
+  window.localStorage.setItem(
+    'searchString',
+    (document.querySelector('.input_field') as HTMLInputElement)?.value
+  );
+  searchArtistsBlock!.innerHTML = '';
+  searchAlbumsBlock!.innerHTML = '';
+  searchTracksBlock!.innerHTML = '';
+  bootstrap(
+    (document.querySelector('.input_field') as HTMLInputElement)?.value
+  );
+});
 
-const a = document.getElementById("asdasd")
-
-a?.addEventListener('click', () => {
-  console.log((document.querySelector(".input_field") as HTMLInputElement)?.value)
-  window.localStorage.setItem("searchString", (document.querySelector(".input_field") as HTMLInputElement)?.value)
-})
-
-
-window.localStorage.setItem("searchString", "steve")
-bootstrap();
+resetButton?.addEventListener('click', () => {
+  searchResults!.innerText = `Search results for "${searchResults}"`;
+  searchArtistsBlock!.innerHTML = '';
+  searchAlbumsBlock!.innerHTML = '';
+  searchTracksBlock!.innerHTML = '';
+  window.localStorage.setItem('searchString', '');
+  inputField.value = '';
+});
+window.localStorage.setItem('searchString', 'Drake');
+bootstrap(window.localStorage.getItem('searchString') || '');
