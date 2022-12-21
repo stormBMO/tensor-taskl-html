@@ -3,18 +3,10 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="../src/index.css">
-  <link rel="stylesheet" type="text/css" href="../src/search.css">
-  <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./search.css">
+  <link rel="stylesheet" href="./main.css">
+  <script type="module" src="./script/searchPage.js" defer></script>
   <title>Диплом</title>
 </head>
 
@@ -45,7 +37,7 @@
         <img class="image" src="assets/search_btn.png" alt="">
       </div>
       <div class="pages">
-        <a class="link" href="">Home</a>
+        <a class="link" href="/">Home</a>
         <a class="link" href="">Live</a>
         <a class="link" href="">Music</a>
         <a class="link" href="">Charts</a>
@@ -61,7 +53,7 @@
     <div class="search_content">
       <div class="search_header">
         <div class="search_title">
-          <h1>Search results for "Flower boy"</h1>
+          <h1 id="results"></h1>
         </div>
         <div class="quick_menu">
           <ul class="table_search">
@@ -76,13 +68,13 @@
       <div class="response_block">
         <div class="response_wrapper">
           <div class="search_input">
-            <input class="input_field" type="text" disabled placeholder="Search.." value="Flower Boy" name="search">
+            <input class="input_field" type="text" placeholder="Search.." name="search">
             <div class="search_controls">
-              <button class="btn_search" type="reset">
+              <button class="btn_search" id="reset" type="reset">
                 X
               </button>
               <hr />
-              <button class="btn_search" type="submit">
+              <button class="btn_search" id="search" type="submit">
                 <img class="image" src="assets/search_gray.png" alt="">
               </button>
             </div>
@@ -91,113 +83,7 @@
             <div class="artists_label">
               <h1>Artists</h1>
             </div>
-            <div class="artists_response">
-              <div class="artists_cell">
-                <div class="cover">
-                  <img class="image" src="assets/blank_cover.webp" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Nobody</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">1022 listeners</p>
-                  </div>
-                </div>
-              </div>
-              <div class="artists_cell">
-                <div class="cover">
-                  <img class="image" src="assets/found_cover.jfif" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Tyler, The Creator</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">5663728 listeners</p>
-                  </div>
-                </div>
-              </div>
-              <div class="artists_cell">
-                <div class="cover">
-                  <img class="image" src="assets/blank_cover.webp" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Nobody</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">1022 listeners</p>
-                  </div>
-                </div>
-              </div>
-              <div class="artists_cell">
-                <div class="cover">
-                  <img class="image" src="assets/found_cover.jfif" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Tyler, The Creator</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">5663728 listeners</p>
-                  </div>
-                </div>
-              </div>
-              <div class="artists_cell">
-                <div class="cover">
-                  <img class="image" src="assets/found_cover.jfif" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Tyler, The Creator</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">5663728 listeners</p>
-                  </div>
-                </div>
-              </div>
-              <div class="artists_cell">
-                <div class="cover">
-                  <img class="image" src="assets/blank_cover.webp" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Nobody</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">1022 listeners</p>
-                  </div>
-                </div>
-              </div>
-              <div class="artists_cell">
-                <div class="cover">
-                  <img class="image" src="assets/found_cover.jfif" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Tyler, The Creator</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">5663728 listeners</p>
-                  </div>
-                </div>
-              </div>
-              <div class="artists_cell">
-                <div class="cover">
-                  <img class="image" src="assets/blank_cover.webp" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Nobody</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">1022 listeners</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+            <div class="artists_response"></div>
             <div class="more_artists">
               <a class="link_artists" href="#">More artists</a>
             </div>
@@ -206,112 +92,7 @@
             <div class="albums_label">
               <h1>Albums</h1>
             </div>
-            <div class="albums_response">
-              <div class="albums_cell">
-                <div class="cover">
-                  <img class="image" src="assets/blank_album.webp" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Nothing song</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">Nobody</p>
-                  </div>
-                </div>
-              </div>
-              <div class="albums_cell">
-                <div class="cover">
-                  <img class="image" src="assets/found_cover.jfif" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Flower Boy</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">Tyler, The Creator</p>
-                  </div>
-                </div>
-              </div>
-              <div class="albums_cell">
-                <div class="cover">
-                  <img class="image" src="assets/blank_album.webp" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Nothing song</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">Nobody</p>
-                  </div>
-                </div>
-              </div>
-              <div class="albums_cell">
-                <div class="cover">
-                  <img class="image" src="assets/found_cover.jfif" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Flower Boy</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">Tyler, The Creator</p>
-                  </div>
-                </div>
-              </div>
-              <div class="albums_cell">
-                <div class="cover">
-                  <img class="image" src="assets/found_cover.jfif" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Flower Boy</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">Tyler, The Creator</p>
-                  </div>
-                </div>
-              </div>
-              <div class="albums_cell">
-                <div class="cover">
-                  <img class="image" src="assets/blank_album.webp" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Nothing song</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">Nobody</p>
-                  </div>
-                </div>
-              </div>
-              <div class="albums_cell">
-                <div class="cover">
-                  <img class="image" src="assets/found_cover.jfif" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Flower Boy</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">Tyler, The Creator</p>
-                  </div>
-                </div>
-              </div>
-              <div class="albums_cell">
-                <div class="cover">
-                  <img class="image" src="assets/blank_album.webp" alt="">
-                </div>
-                <div class="text">
-                  <div class="name">
-                    <h3 class="halfheader">Nothing song</h3>
-                  </div>
-                  <div class="descriptions_cell">
-                    <p class="planetext">Nobody</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div class="albums_response"></div>
             <div class="more_albums">
               <a class="link_albums" href="#">More albums</a>
             </div>
@@ -320,173 +101,7 @@
             <div class="tracks_label">
               <h1>Tracks</h1>
             </div>
-            <div class="track_response">
-              <div class="track_cell">
-                <div class="track_info">
-                  <div class="track_play">
-                    <img class="inner_img" src="assets/play_button.png" alt="">
-                  </div>
-                  <div class="track_cover">
-                    <img class="inner_img" src="assets/found_cover.jfif" alt="">
-                  </div>
-                  <div class="track_name">
-                    <h3 class="halfheader">November</h3>
-                  </div>
-                  <div class="track_artist">Tyler, The Creator</div>
-                </div>
-                <div class="track_time">3:45</div>
-              </div>
-              <div class="track_cell">
-                <div class="track_info">
-                  <div class="track_play">
-                    <img class="inner_img" src="assets/play_button.png" alt="">
-                  </div>
-                  <div class="track_cover">
-                    <img class="inner_img" src="assets/found_cover.jfif" alt="">
-                  </div>
-                  <div class="track_name">
-                    <h3 class="halfheader">November</h3>
-                  </div>
-                  <div class="track_artist">Tyler, The Creator</div>
-                </div>
-                <div class="track_time">3:45</div>
-              </div>
-              <div class="track_cell">
-                <div class="track_info">
-                  <div class="track_play">
-                    <img class="inner_img" src="assets/play_button.png" alt="">
-                  </div>
-                  <div class="track_cover">
-                    <img class="inner_img" src="assets/found_cover.jfif" alt="">
-                  </div>
-                  <div class="track_name">
-                    <h3 class="halfheader">November</h3>
-                  </div>
-                  <div class="track_artist">Tyler, The Creator</div>
-                </div>
-                <div class="track_time">3:45</div>
-              </div>
-              <div class="track_cell">
-                <div class="track_info">
-                  <div class="track_play">
-                    <img class="inner_img" src="assets/play_button.png" alt="">
-                  </div>
-                  <div class="track_cover">
-                    <img class="inner_img" src="assets/found_cover.jfif" alt="">
-                  </div>
-                  <div class="track_name">
-                    <h3 class="halfheader">November</h3>
-                  </div>
-                  <div class="track_artist">Tyler, The Creator</div>
-                </div>
-                <div class="track_time">3:45</div>
-              </div>
-              <div class="track_cell">
-                <div class="track_info">
-                  <div class="track_play">
-                    <img class="inner_img" src="assets/play_button.png" alt="">
-                  </div>
-                  <div class="track_cover">
-                    <img class="inner_img" src="assets/found_cover.jfif" alt="">
-                  </div>
-                  <div class="track_name">
-                    <h3 class="halfheader">November</h3>
-                  </div>
-                  <div class="track_artist">Tyler, The Creator</div>
-                </div>
-                <div class="track_time">3:45</div>
-              </div>
-              <div class="track_cell">
-                <div class="track_info">
-                  <div class="track_play">
-                    <img class="inner_img" src="assets/play_button.png" alt="">
-                  </div>
-                  <div class="track_cover">
-                    <img class="inner_img" src="assets/found_cover.jfif" alt="">
-                  </div>
-                  <div class="track_name">
-                    <h3 class="halfheader">November</h3>
-                  </div>
-                  <div class="track_artist">Tyler, The Creator</div>
-                </div>
-                <div class="track_time">3:45</div>
-              </div>
-              <div class="track_cell">
-                <div class="track_info">
-                  <div class="track_play">
-                    <img class="inner_img" src="assets/play_button.png" alt="">
-                  </div>
-                  <div class="track_cover">
-                    <img class="inner_img" src="assets/found_cover.jfif" alt="">
-                  </div>
-                  <div class="track_name">
-                    <h3 class="halfheader">November</h3>
-                  </div>
-                  <div class="track_artist">Tyler, The Creator</div>
-                </div>
-                <div class="track_time">3:45</div>
-              </div>
-              <div class="track_cell">
-                <div class="track_info">
-                  <div class="track_play">
-                    <img class="inner_img" src="assets/play_button.png" alt="">
-                  </div>
-                  <div class="track_cover">
-                    <img class="inner_img" src="assets/found_cover.jfif" alt="">
-                  </div>
-                  <div class="track_name">
-                    <h3 class="halfheader">November</h3>
-                  </div>
-                  <div class="track_artist">Tyler, The Creator</div>
-                </div>
-                <div class="track_time">3:45</div>
-              </div>
-              <div class="track_cell">
-                <div class="track_info">
-                  <div class="track_play">
-                    <img class="inner_img" src="assets/play_button.png" alt="">
-                  </div>
-                  <div class="track_cover">
-                    <img class="inner_img" src="assets/found_cover.jfif" alt="">
-                  </div>
-                  <div class="track_name">
-                    <h3 class="halfheader">November</h3>
-                  </div>
-                  <div class="track_artist">Tyler, The Creator</div>
-                </div>
-                <div class="track_time">3:45</div>
-              </div>
-              <div class="track_cell">
-                <div class="track_info">
-                  <div class="track_play">
-                    <img class="inner_img" src="assets/play_button.png" alt="">
-                  </div>
-                  <div class="track_cover">
-                    <img class="inner_img" src="assets/found_cover.jfif" alt="">
-                  </div>
-                  <div class="track_name">
-                    <h3 class="halfheader">November</h3>
-                  </div>
-                  <div class="track_artist">Tyler, The Creator</div>
-                </div>
-                <div class="track_time">3:45</div>
-              </div>
-              <div class="track_cell">
-                <div class="track_info">
-                  <div class="track_play">
-                    <img class="inner_img" src="assets/play_button.png" alt="">
-                  </div>
-                  <div class="track_cover">
-                    <img class="inner_img" src="assets/found_cover.jfif" alt="">
-                  </div>
-                  <div class="track_name">
-                    <h3 class="halfheader">November</h3>
-                  </div>
-                  <div class="track_artist">Tyler, The Creator</div>
-                </div>
-                <div class="track_time">3:45</div>
-              </div>
-            </div>
+            <div class="track_response"></div>
             <div class="more_tracks">
               <a class="link_tracks" href="#">More tracks</a>
             </div>
