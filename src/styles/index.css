@@ -77,6 +77,11 @@ header {
   width: 23rem;
 }
 
+.search:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 .album_pic .image {
   height: 100%;
   width: 100%;
@@ -107,6 +112,7 @@ header {
 }
 
 .logo {
+  cursor: pointer;
   align-items: center;
   width: 10%;
   height: 100%;
